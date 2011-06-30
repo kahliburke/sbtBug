@@ -1,4 +1,4 @@
-LAUNCHER=sbt-launch-0.10.1-20110629-052055.jar
+LAUNCHER=sbt-launch-0.10.1-20110630-140903.jar
 JAVA_OPTS="-Xmx512M -XX:MaxPermSize=256M -Djava.awt.headless=true $SBT_OPTS"
 
 if [[ $SBT_DEBUG = 'true' ]]
