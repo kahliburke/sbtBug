@@ -1,18 +1,14 @@
-import java.io.File
 import sbt._
-import UpdateReport._
 import Keys._
-import Path._
-//import org.sbtidea._
 
 object CovalentGradebookImportToolBuild extends Build {
 
   val localm2RepoPath = Path.userHome / ".m2" / "repository"
 
 	lazy val mySettings = Seq(
-    name := "Covalent Gradebook Import Tool",
+    name := "Test Bug",
     version := "1.0",
-    organization := "com.cengage",
+    organization := "com.wintermutesys",
     scalaVersion := "2.9.0-1",
 
     resolvers ++= Seq(
@@ -21,40 +17,10 @@ object CovalentGradebookImportToolBuild extends Build {
     ),
 
     libraryDependencies ++= {
-      val snapshotVersion = "2.0.0-SNAPSHOT"
       Seq(
-        "com.cengage.covalent.gradebook" % "CovalentAkkaSupport" % snapshotVersion withSources() changing,
-        "com.cengage.covalent.gradebook" % "CovalentAggregationMessages" % snapshotVersion withSources() changing,
-        "com.cengage.covalent.gradebook" % "CovalentGradebookPersistor" % snapshotVersion classifier "classes" withSources() changing,
-        "com.cengage.covalent.gradebook" % "CovalentGradebookTakeAggregator" % snapshotVersion classifier "classes" withSources() changing,
-        "com.cengage.covalent.gradebook" % "MindTapGradebookAggregator" % snapshotVersion classifier "classes" withSources() changing,
-        "com.cengage.nextbook" % "MindTapGradebookReportModel" % snapshotVersion withSources() changing,
-        "org.apache.camel" % "camel-quartz" % "2.7.1",
         "org.apache.activemq" % "activemq-core" % "5.5.0"
         )
-    },
-
-    initialCommands := {
-      """
-        import com.cengage.covalent.gradebook._
-        import GradebookSystemBoot._
-        import akka.actor._
-        import org.apache.camel._
-        import scala.collection.JavaConversions._
-        import java.net._
-        import akka.camel._
-        import com.cengage.mongo.MongoWrapper._
-        import com.google.code.morphia._
-        import com.cengage.covalent.gradebook.model._
-        import course._
-        import activity._
-        import aggregate._
-        import grader._
-        import property._
-        import usage._
-        import user._
-        boot
-      """ }
+    }
 
   )
 
@@ -92,5 +58,5 @@ object CovalentGradebookImportToolBuild extends Build {
 
   val customSettings = Defaults.defaultSettings ++ mySettings ++ customClasspath
 
-  lazy val myProject = Project("Covalent Gradebook Import Tool", file("."), settings = customSettings)
+  lazy val myProject = Project("Test Bug", file("."), settings = customSettings)
 }
